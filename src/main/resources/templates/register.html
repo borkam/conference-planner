@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Conference Planner - Registration</title>
+</head>
+
+<body>
+	<div th:if="${availability}">
+	    <p th:text="${availability}">availabilityMessage</p>
+	</div>
+	<form th:action="@{/register/save/}" th:object="${keyNote}" method="post">
+		<table>
+		    <tr>
+		        <td valign="top">
+					<label>Subject:</label>
+		        </td>
+		        <td>
+	                <input type="text"
+	                	   pattern=".{3,75}"
+	                	   required 
+	                	   title="3 to 75 characters"
+	                	   th:field="*{subject}"/>
+		            <div th:if="${#fields.hasErrors('subject')}" th:errors="*{subject}">Subject Error</div>
+	             </td>
+		    </tr>
+		    <tr>
+		        <td valign="top">
+					<label>Duration:</label>
+				</td>
+		        <td>
+	                <input id="duration"
+	                	   type="number" 
+	                	   required
+	                	   min="5"
+	                	   max="240"
+	                	   title="5 to 240 minutes"
+	                	   th:field="*{duration}"/> mins
+	                
+	               	<input type="checkbox"
+	               		   th:field="*{lightning}"
+	               		   onclick="document.getElementById('duration').value=5;
+	               					document.getElementById('duration').disabled=this.checked;"/> 
+	               	Lightning
+	               	<div th:if="${#fields.hasErrors('duration')}" th:errors="*{duration}">Duration Error</div>
+		        </td>
+		    </tr>
+		    <tr>
+		        <td>
+					&nbsp;
+				</td>
+		        <td>
+	                <button type="submit">Register</button>
+		        </td>
+		    </tr>
+	    </table>
+	</form>
+</body>
+</html>

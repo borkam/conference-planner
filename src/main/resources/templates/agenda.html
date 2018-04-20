@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Conference Planner - Current Agenda</title>
+</head>
+
+<body>
+	<h2>Agenda</h2>
+	<a href="/register/new">Register</a>
+	
+	<table border="1">
+	    <tr>
+	        <th>Track 1</th>
+	        <th>Track 2</th>
+	    </tr>
+	    <tr>
+	        <td>
+	        	<p th:each="keyNote : ${tracks.get(0).keyNotes}"
+       			   th:text="${keyNote}">keyNote0</p>
+	        </td>
+	        <td>
+	        	<p th:each="keyNote : ${tracks.get(2).keyNotes}"
+       			   th:text="${keyNote}">keyNote2</p>
+	        </td>
+	    </tr>
+	    <tr>
+	        <td>12:00PM Lunch</td>
+	        <td>12:00PM Lunch</td>
+	    </tr>
+	    <tr>
+	        <td>
+	        	<p th:each="keyNote : ${tracks.get(1).keyNotes}"
+       			   th:text="${keyNote}">keyNote1</p>
+	        </td>
+	        <td>
+	        	<p th:each="keyNote : ${tracks.get(3).keyNotes}"
+       			   th:text="${keyNote}">keyNote3</p>
+	        </td>
+	    </tr>
+	    <tr>
+	        <td>05:00PM Closing</td>
+	        <td>05:00PM Closing</td>
+	    </tr>
+	</table>
+
+</body>
+</html>
